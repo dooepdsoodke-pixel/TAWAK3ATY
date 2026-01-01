@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAWAK3ATY</title>
+    <title>توكعة تي PRO - المحدث</title>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <style>
@@ -27,12 +27,27 @@
         .btn-red { background: #ef4444 !important; }
         .btn-orange { background: #f59e0b !important; }
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; z-index: 2000; padding: 20px; overflow-y: auto; }
+        
+        /* ستايل التنبيه التلقائي الجديد */
+        #autoPopup {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: #ef4444; color: white; padding: 15px; border-radius: 12px;
+            width: 90%; max-width: 400px; text-align: center; z-index: 3000;
+            display: none; box-shadow: 0 5px 20px rgba(0,0,0,0.5); font-size: 13px;
+            border: 2px solid #fff;
+        }
+        #autoPopup a { color: #fbbf24; font-weight: bold; text-decoration: underline; }
     </style>
 </head>
 <body>
 
+<div id="autoPopup">
+    ⚠️ من الممكن تعطل زرار الدعم في أي وقت، يرجى الذهاب لهذا الرابط: <br>
+    <a href="https://t.me/TAWAK3ATY_BOT" target="_blank">https://t.me/TAWAK3ATY_BOT</a>
+</div>
+
 <div class="container">
-    <div style="text-align:center; opacity:0.3; font-size:10px; padding:10px; cursor:pointer;" onclick="checkAdmin()">WELLCOM</div>
+    <div style="text-align:center; opacity:0.3; font-size:10px; padding:10px; cursor:pointer;" onclick="checkAdmin()">لوحة التحكم</div>
 
     <div id="authPanel" class="card">
         <h2 style="text-align:center; margin-bottom:15px;">تسجيل الدخول</h2>
@@ -57,8 +72,7 @@
         <div id="notifications" style="margin-top:15px;"></div>
         <div style="display: flex; gap: 5px; margin-top: 10px;">
             <button onclick="showMyBets()" style="background:#475569;">رهاناتي</button>
-            <button onclick="window.location.href='https://telegram.me/TAWAK3ATY_BOT" style="background:#22c55e;">الدعم</button>
-
+            <button onclick="window.location.href='https://t.me/TAWAK3ATY_BOT" style="background:#22c55e;">الدعم</button>
             <button onclick="location.reload()" style="background:#94a3b8;">خروج</button>
         </div>
         <h3 style="margin-top:20px; color:#3b82f6;">المباريات المتاحة 🔥</h3>
@@ -114,6 +128,7 @@
 </div>
 
 <script>
+    // تكوين الفايربيس (تأكد من استخدام بياناتك الصحيحة)
     const firebaseConfig = {
         apiKey: "AIzaSyDrwa6NIU7VVVItmGBrVD9IPwyBJqU1gjI",
         authDomain: "tawak3aty.firebaseapp.com",
@@ -127,7 +142,16 @@
 
     let user = null; let currentSlip = []; let adminClicks = 0;
 
-    function checkAdmin() { if(++adminClicks >= 5) { if(prompt("الباسورد:") === "mohamedyasser@99") { document.getElementById('adminPanel').style.display = 'block'; loadAdminData(); } } }
+    // --- كود إظهار التنبيه كل 5 ثواني ---
+    setInterval(() => {
+        const pop = document.getElementById('autoPopup');
+        pop.style.display = 'block';
+        // يختفي بعد 3 ثواني ليظهر مجدداً بعد 5 ثواني الكلية
+        setTimeout(() => { pop.style.display = 'none'; }, 3000);
+    }, 5000);
+
+    // بقية الدوال (Login, Reg, Admin, Matches...)
+    function checkAdmin() { if(++adminClicks >= 5) { if(prompt("الباسورد:") === "TAWAK3ATY2025") { document.getElementById('adminPanel').style.display = 'block'; loadAdminData(); } } }
 
     async function handleLogin() {
         const u = document.getElementById('userIn').value.trim();
@@ -158,7 +182,6 @@
             const mSnap = await db.collection('matches').where('active','==',true).get();
             const usersSnap = await db.collection('users').get();
             let report = {}; let mh = '';
-
             mSnap.forEach(doc => {
                 const m = doc.data();
                 report[doc.id] = { name: m.name, team1: 0, draw: 0, team2: 0 };
@@ -172,7 +195,6 @@
                     </div>
                 </div>`;
             });
-
             usersSnap.forEach(uDoc => {
                 const u = uDoc.data();
                 if (u.bets && Array.isArray(u.bets)) {
@@ -185,7 +207,6 @@
                     });
                 }
             });
-
             let ah = '';
             for (let id in report) {
                 ah += `<div class="analysis-card"><b>📍 ${report[id].name}</b><br>1: ${report[id].team1}ج | X: ${report[id].draw}ج | 2: ${report[id].team2}ج</div>`;
@@ -234,7 +255,7 @@
         if(!confirm(`تأكيد النتيجة؟`)) return;
         await db.collection('results').doc(matchId).set({ winner: winnerResult });
         await db.collection('matches').doc(matchId).delete();
-        alert("تم إعلان النتيجة ومسح المباراة.");
+        alert("تم إعلان النتيجة.");
         loadAdminData(); loadMatches();
     }
 
