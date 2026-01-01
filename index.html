@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>PROFIT CODES - كامل</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial, sans-serif;background:#FFEB3B;margin:0;color:#222 }
+    header{display:flex;justify-content:space-between;align-items:center;padding:30px 16px;background:#00bcd4;border-bottom:1px solid #eee;position:sticky;top:0;z-index:20}
+    .brand{font-weight:700}
+    .user-info{font-size:14px}
+    .wrap{padding:18px;max-width:1100px;margin:0 auto}
+    .hidden{display:none}
+    .center{text-align:center}
+    .companies{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+    .companies img{width:155px;border-radius:12px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.08);transition:transform .18s}
+    .companies img:hover{transform:scale(1.05)}
+    .btn{display:inline-block;background:#007bff;color:#fff;padding:10px 16px;border-radius:80px;border:0;cursor:pointer;text-decoration:none}
+    .btn.secondary{background:#6c757d}
+    .card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,.06);max-width:760px;margin:12px auto}
+    form{max-width:520px;margin:10px auto}
+    label{display:block;margin-top:10px;font-weight:700}
+    input,select{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #ccc;box-sizing:border-box}
+    .top-actions{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+    .ad-box{background:#fff;border-radius:10px;padding:12px;box-shadow:0 4px 10px rgba(0,0,0,.06);max-width:720px;margin:10px auto}
+    .question-box{background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.06);max-width:840px;margin:10px auto}
+    .q-title{font-size:18px;margin-bottom:10px}
+    .options{display:grid;gap:10px}
+    .opt{padding:10px;border-radius:8px;border:1px solid #ddd;background:#fafafa;cursor:pointer;text-align:right}
+    .opt:hover{background:#f0f7ff;border-color:#cce}
+    .note{background:#fff3cd;border:1px solid #ffe08a;padding:10px;border-radius:8px;max-width:780px;margin:12px auto;color:#7a6400}
+    .store-item{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:720px;margin:12px auto;padding:12px;background:#fff;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+    footer{color:#888;text-align:center;margin:26px 0}
+    .small{font-size:20px;color:#666}
+#paymentNumber {
+  font-size: 14px; /* ممكن تغيّر الرقم لأي حجم يناسبك */
+}
+
+  /* تعديل صور الشركات لتظل أفقية وقابلة للتمرير على الموبايل */
+@media (max-width: 6000px) {
+  .companies {
+    flex-wrap: nowrap;        /* منع الالتفاف عمودي */
+    overflow-x: auto;         /* تفعيل التمرير الأفقي */
+    -webkit-overflow-scrolling: touch; /* سلاسة التمرير على الموبايل */
+  }
+
+  .companies img {
+    width: 100px;             /* حجم مناسب للعرض على الموبايل */
+    flex-shrink: 0;           /* منع التصغير التلقائي */
+  }
+}
+
+  </style>
+</head>
+<body>
+
+
+  <!-- ######### HEADER ######### -->
+  <header>
+    <div class="brand">⚽ PROFIT CODES</div>
+    <div class="user-info" id="headerUser">— لم تسجل بعد —</div>
+  </header>
+
+  <div class="wrap">
+
+    <!-- ================== تسجيل / دخول مبسط ================== -->
+    <section id="register" class="card">
+      <h2 class="center">أضف اسمك ومعلوماتك للمتابعة</h2>
+      <p class="small center">سنرسل معلومات التسجيل (الاسم، الإيميل، المعرف) إلى التليجرام خاص بك.</p>
+      <form id="registerForm" onsubmit="event.preventDefault(); doRegister();">
+        <label>الاسم بالكامل</label>
+        <input type="text" id="regName" placeholder="ABC" required>
+        <label>البريد الإلكتروني</label>
+        <input type="email" id="regEmail" placeholder="ABC@gmail.com" required>
+        <div class="top-actions">
+          <button class="btn" type="submit">متابعة</button>
+        </div>
+      </form>
+      <p class="small center">لن نشارك بيانات المستخدم مع طرف ثالث إلا للغرض التجاري المتفق عليه (الإدارة).</p>
+    </section>
+
+    <!-- ================== الصفحة الرئيسية ================== -->
+    <section id="home" class="hidden">
+      <div class="card center">
+        <h2 id="welcome">مرحباً</h2>
+        <p class="small" id="userIdDisplay">معرّفك: —</p>
+
+        <div class="companies" id="companies">
+          <!-- صور الشركات -->
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfAoawhDPbtrUdpgQgBHzSPNh1R2ad8ABqIDgXSatR838hySgt02iOOTMO&s=10" alt="1XBET" onclick="openCharge('1xbet')">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNcrLR3lTjDxKbvzvBYuyCNcxN4RyRNJJxWyJniuaYuSyjVg_czMlvOcAt&s=10" alt="MELBET" onclick="openCharge('melbet')">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Linebet.logo.jpg" alt="LINEBET" onclick="openCharge('linebet')">
+        </div>
+
+        <div class="top-actions">
+          <button class="btn" onclick="showMaintenanceMessage()">اربح مجانا 🎁</button>
+
+<script>
+  function showMaintenanceMessage() {
+    alert("مغلق للصيانة");
+  }
+</script>
+
+          <button class="btn secondary" onclick="logout()">تسجيل خروج</button>
+        </div>
+
+        <p class="small">نقاطك الحالية: <strong id="pointsHeader">0</strong></p>
+      </div>
+    </section>
+
+    <!-- ================== صفحة الشحن (نموذج) ================== -->
+    <section id="formPage" class="hidden card">
+      <h2 id="companyTitle">طريقة الشحن</h2>
+      <form id="chargeForm" onsubmit="event.preventDefault(); sendChargeForm();">
+        <label>رقم التحويل📱</label>
+        <input type="text" id="phone" placeholder="مثال: 01XXXXXXXXX" required>
+
+        <label>اختر السلعة</label>
+        <select id="product" required>
+          <option value="كود اود 1.5">كود اود 1.5 ~ السعر:25</option>
+          <option value="كود اود 2">كود اود 2 ~ السعر:50</option>
+          <option value="كود اود 3">كود اود 3 ~ السعر:100</option>
+          <option value="كود اود 4">كود اود 4 ~ السعر:150</option>
+          <option value="كود اود 5">كود اود 5 ~ السعر:200</option>
+          <option value="كود اود 6">كود اود 6 ~ السعر:250</option>
+          <option value="كود اود 7">كود اود 7 ~ السعر:300</option>
+          <option value="كود اود 8">كود اود 8 ~ السعر:350</option>
+          <option value="كود اود 9">كود اود 9 ~ السعر:400</option>
+          <option value="كود اود 10">كود اود 10 ~ السعر:450</option>
+        </select>
+
+        <label>حالة الطلب</label>
+        <select id="order" required>
+          <option value="جار المراجعة⏰">جار المراجعة⏰</option>
+        </select>
+
+        <label>سكرين شوت التحويل</label>
+        <input type="file" id="screenshot" accept="image/*" required>
+
+        <label>طريقة الدفع</label>
+        <select id="paymentMethod" required>
+          <option value="فودافون كاش">فودافون كاش</option>
+          <option value="إتصالات كاش">إتصالات كاش</option>
+          <option value="أورانج كاش">أورانج كاش</option>
+          <option value="insta pay">insta pay</option>
+          <option value="stc pay">stc pay</option>
+          <option value="binanse">binanse</option>
+        </select>
+
+        <div class="small" id="paymentNumberDisplay">رقم الدفع: <span id="paymentNumber">01044208416</span></div>
+
+        <div class="top-actions">
+          <button class="btn" type="submit">إرسال</button>
+          <button class="btn secondary" type="button" onclick="showView('home')">رجوع</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ================== صفحة اختيار: اربح مجانا ================== -->
+    <section id="free" class="hidden">
+      <div class="card center">
+        <h3>🎁 اربح مجاناً</h3>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px">
+          <div style="max-width:320px" class="card">
+            <h4 class="center">الربح من الإعلانات📺</h4>
+            <p class="small center">اضغط مشاهدة إعلان وانتظر 30 ثانية لتحصل على نقاط.</p>
+            <div class="top-actions">
+              <button class="btn" id="watchAdBtn" onclick="watchAd()">مشاهدة إعلان</button>
+              <button class="btn secondary" onclick="showView('home')">رجوع</button>
+            </div>
+            <div class="small center" id="adStatus">جاهز</div>
+          </div>
+
+          <div style="max-width:320px" class="card">
+            <h4 class="center">أسئلة الربح💵</h4>
+            <p class="small center">أجب على 100 سؤال اليومي، كل إجابة صحيحة = 5 نقاط.</p>
+            <div class="top-actions">
+              <button class="btn" onclick="startQuiz()">ابدأ الأسئلة</button>
+              <button class="btn secondary" onclick="showView('home')">رجوع</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== صفحة الأسئلة (الكويز) ================== -->
+    <section id="quiz" class="hidden">
+      <div class="question-box">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px">
+          <div class="tag small">أسئلة يومية (مرة واحدة/يوم)</div>
+          <div class="small">التاريخ (UTC): <span id="utcDay"></span></div>
+        </div>
+
+        <div id="quizBody"></div>
+
+        <div class="top-actions" style="margin-top:12px">
+          <button class="btn secondary" onclick="showView('free')">رجوع</button>
+          <button class="btn" onclick="showView('store')">المتجر</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== المتجر ================== -->
+    <section id="store" class="hidden">
+      <h3 class="center">المتجر</h3>
+      <div class="store-item">
+        <div>
+          <div style="font-weight:700">سلعة: 200ج</div>
+          <div class="small">السعر: 40000 نقطة</div>
+        </div>
+        <div>
+          <button onclick="buyItem(40000)">شراء بـ 40000</button>
+
+          <button class="btn secondary" onclick="showView('free')">رجوع</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="small center">© PROFIT CODES</footer>
+  </div>
+
+  <!-- ============ SCRIPT ============ -->
+  <script>
+    /* --------------- إعدادات التليجرام: ضعت التوكن و CHAT_ID المرسلين --------------- */
+    const TG_TOKEN = '7918417116:AAGkA6fVlOATMlrT3uYglifhn09P7MU6NBE';
+    const TG_CHAT_ID = '-1002978785961';
+    /* --------------- بيانات ونقاط المستخدم --------------- */
+    const POINTS_PER_CORRECT = 5;
+    const AD_REWARD = 2;
+    const AD_COOLDOWN_SEC = 30;
+
+    function getPoints(){ return parseInt(localStorage.getItem('pc_points')||'0',10); }
+    function setPoints(v){ localStorage.setItem('pc_points', String(v)); document.getElementById('pointsHeader').innerText = v; document.getElementById('headerUser').innerText = getUserDisplay(); document.getElementById('pointsHeader').innerText = v; document.getElementById('buyBtn').disabled = v < 1000; }
+    setPoints(getPoints());
+
+    /* --------------- تسجيل المستخدم --------------- */
+    function generateId(){
+      const n = Math.floor(Math.random()*900000)+100000;
+      return 'USER-' + n;
+    }
+
+    function getUser(){
+      const u = localStorage.getItem('pc_user');
+      return u ? JSON.parse(u) : null;
+    }
+    function saveUser(u){
+      localStorage.setItem('pc_user', JSON.stringify(u));
+      updateHeaderUser();
+    }
+    function updateHeaderUser(){
+      const u = getUser();
+      const header = document.getElementById('headerUser');
+      if(u){ header.innerHTML = `${u.name} — <span style="font-family:monospace">${u.id}</span>`; } else { header.innerText = '— لم تسجل بعد —'; }
+    }
+    updateHeaderUser();
+
+    async function doRegister(){
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      if(!name || !email){ alert('من فضلك املأ الاسم والإيميل'); return; }
+      let u = getUser();
+      if(!u){
+        u = { name, email, id: generateId(), createdAt: new Date().toISOString() };
+        saveUser(u);
+      } else {
+        u.name = name; u.email = email;
+        saveUser(u);
+      }
+
+      // إرسال بيانات التسجيل للتليجرام
+      try{
+        const text = `تسجيل جديد:\nالاسم: ${u.name}\nالايميل: ${u.email}\nالمعرف: ${u.id}\nالوقت: ${new Date().toISOString()}`;
+        await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ chat_id: TG_CHAT_ID, text })
+        });
+      }catch(e){ console.error('tg send failed', e); }
+
+      // إظهار الصفحة الرئيسية
+      document.getElementById('register').classList.add('hidden');
+      document.getElementById('home').classList.remove('hidden');
+      document.getElementById('welcome').innerText = `مرحبا ${u.name}`;
+      document.getElementById('userIdDisplay').innerText = `معرّفك: ${u.id}`;
+      updateHeaderUser();
+      setPoints(getPoints());
+    }
+
+    /* --------------- تسجيل خروج --------------- */
+    function logout(){
+      if(confirm('هل تريد تسجيل الخروج؟')) {
+        localStorage.removeItem('pc_user');
+        document.getElementById('home').classList.add('hidden');
+        document.getElementById('register').classList.remove('hidden');
+        updateHeaderUser();
+      }
+    }
+
+    /* --------------- فتح نموذج الشحن --------------- */
+    function openCharge(company){
+      const u = getUser();
+      if(!u){
+        alert('من فضلك سجل بياناتك أولاً.');
+        document.getElementById('register').classList.remove('hidden');
+        document.getElementById('home').classList.add('hidden');
+        return;
+      }
+      document.getElementById('home').classList.add('hidden');
+      document.getElementById('formPage').classList.remove('hidden');
+      document.getElementById('companyTitle').innerText = 'طريقة الشحن لـ ' + company;
+    }
+
+    /* --------------- إرسال نموذج الشحن مع صورة للتليجرام --------------- */
+    async function sendChargeForm(){
+      const u = getUser();
+      if(!u){ alert('سجلي حسابك أولاً'); return; }
+
+      const phone = document.getElementById('phone').value.trim();
+      const product = document.getElementById('product').value;
+      const order = document.getElementById('order').value;
+      const paymentMethod = document.getElementById('paymentMethod').value;
+      const screenshotFile = document.getElementById('screenshot').files[0];
+
+      if(!phone){ alert('ادخل رقم التحويل'); return; }
+      if(!screenshotFile){ alert('رفع سكرين شوت مطلوب'); return; }
+
+      const fd = new FormData();
+      fd.append('chat_id', TG_CHAT_ID);
+      fd.append('photo', screenshotFile);
+      const caption = `طلب شحن جديد\nالاسم: ${u.name}\nالمعرف: ${u.id}\nالهاتف: ${phone}\nالسلعة: ${product}\nحالة: ${order}\nطريقة الدفع: ${paymentMethod}`;
+      fd.append('caption', caption);
+
+      try{
+        const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, { method:'POST', body: fd });
+        const data = await res.json();
+        if(data.ok){
+          alert('✅ تم إرسال طلب الشحن. سيتم التواصل معك.');
+          window.location.href = "https://t.me/PROFITCODES55";
+        } else {
+          alert('خطأ في إرسال الطلب❌: ' + (data.description || 'غير معروف'));
+        }
+      }catch(err){
+        console.error(err);
+        alert('خطأ أثناء الإرسال❌.');
+      }
+    }
+
+    // تغيير رقم الدفع عند تغيير الاختيار (إن رغبتِ)
+    document.getElementById('paymentMethod').addEventListener('change', function(){
+      const pm = this.value;
+      const el = document.getElementById('paymentNumber');
+      if(pm === 'فودافون كاش') el.textContent = '01044217437';
+      else if(pm === 'إتصالات كاش') el.textContent = '01107107687';
+      else if(pm === 'أورانج كاش') el.textContent = 'وضع الصيانة';
+      else if(pm === 'insta pay') el.textContent = '01097163602';
+      else if(pm === 'stc pay') el.textContent = '01044217437';
+      else if(pm === 'binanse') el.textContent = 'TUY2NcTaAJQYE5cLpfGXJegadapHyLEzGf';
+    });
+
+    /* --------------- مشاهدة الإعلانات (نقاط) --------------- */
+    let adLock = false;
+    function watchAd(){
+      if(adLock){ return; }
+      adLock = true;
+      document.getElementById('adStatus').innerText = 'انتظر 30 ثانية...';
+      let t = AD_COOLDOWN_SEC;
+      const btn = document.getElementById('watchAdBtn');
+      btn.disabled = true;
+      const iv = setInterval(()=>{
+        t--;
+        document.getElementById('adStatus').innerText = `انتظر ${t} ثانية...`;
+        if(t<=0){
+          clearInterval(iv);
+          setPoints(getPoints() + AD_REWARD);
+          document.getElementById('adStatus').innerText = 'تم إضافة 2 نقطة ✅';
+          btn.disabled = false;
+          adLock = false;
+        }
+      },1000);
+    }
+
+    /* --------------- QUIZ: 100 سؤال مرة يومياً (UTC) --------------- */
+    function utcDayString(){
+      const d = new Date();
+      return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}-${String(d.getUTCDate()).padStart(2,'0')}`;
+    }
+    document.getElementById('utcDay').innerText = utcDayString();
+
+    let questions = [
+      {q:"ما هي عاصمة فرنسا؟",o:["مدريد","باريس","روما","برلين"],a:1},
+      {q:"أكبر كوكب في المجموعة الشمسية هو؟",o:["زحل","نبتون","المشتري","أورانوس"],a:2},
+      {q:"عدد قارات العالم؟",o:["5","6","7","8"],a:2},
+      {q:"العنصر الكيميائي رمزه O هو؟",o:["ذهب","أكسجين","حديد","فضة"],a:1},
+      {q:"مخترع المصباح الكهربائي؟",o:["تيسلا","توماس إديسون","فرانكلين","بيل"],a:1},
+      {q:"أسرع حيوان بري؟",o:["الفهد","الأسد","الذئب","الغزال"],a:0},
+      {q:"نهر النيل يصب في؟",o:["المحيط الهندي","البحر الأحمر","البحر المتوسط","الأطلسي"],a:2},
+      {q:"لغة البرازيل الرسمية؟",o:["الإسبانية","الإنجليزية","البرتغالية","الفرنسية"],a:2},
+      {q:"جهاز في الجسم يضخ الدم؟",o:["الرئة","الكبد","القلب","الكلى"],a:2},
+      {q:"كم ثانية في الدقيقة؟",o:["30","45","60","90"],a:2},
+      {q:"أطول حيوان على الأرض؟",o:["الفيل","الزرافة","الحوت","الجمل"],a:1},
+      {q:"عاصمة اليابان؟",o:["أوساكا","كيوتو","طوكيو","ناغويا"],a:2},
+      {q:"كم عدد حروف اللغة الإنجليزية؟",o:["24","25","26","27"],a:2},
+      {q:"جهاز التنفس عند الأسماك؟",o:["الرئة","الجلد","الخياشيم","القلب"],a:2},
+      {q:"عملة المملكة المتحدة؟",o:["يورو","جنيه إسترليني","دولار","ين"],a:1},
+      {q:"الكوكب الأحمر؟",o:["عطارد","الزهرة","المريخ","نبتون"],a:2},
+      {q:"مقياس شدة الزلازل؟",o:["ريختر","بوفورت","سيلسيوس","بارومتر"],a:0},
+      {q:"يستخدم القياس بالمتر لقياس؟",o:["الزمن","الطول","الكتلة","الحرارة"],a:1},
+      {q:"أكبر محيط؟",o:["الأطلسي","الهادي","الهندي","المتجمد"],a:1},
+      {q:"مؤلف رواية دون كيخوتي؟",o:["سيرفانتس","تولستوي","ديكنز","شكسبير"],a:0},
+      {q:"عدد أضلاع المثلث؟",o:["2","3","4","5"],a:1},
+      {q:"جهاز لقياس الحرارة؟",o:["مقياس ضغط","ترمومتر","أومتر","فولتميتر"],a:1},
+      {q:"موقع الأهرامات في؟",o:["الأقصر","الجيزة","أسوان","الإسكندرية"],a:1},
+      {q:"معدل غليان الماء بالسيليزي؟",o:["50","90","100","120"],a:2},
+      {q:"كم دقيقة في الساعة؟",o:["30","45","60","120"],a:2},
+      {q:"مخترع الهاتف؟",o:["غراهام بيل","أديسون","ماركوني","تسلا"],a:0},
+      {q:"عاصمة إيطاليا؟",o:["ميلان","روما","تورينو","نابولي"],a:1},
+      {q:"حيوان يصنف من الثدييات؟",o:["السلحفاة","الدلفين","التمساح","النعامة"],a:1},
+      {q:"الكائن الذي يصنع غذاءه بنفسه؟",o:["الإنسان","النبات","القط","الأسماك"],a:1},
+      {q:"سبب طول اليوم 24 ساعة؟",o:["دوران الأرض حول الشمس","دوران الأرض حول نفسها","دوران القمر","لا شيء"],a:1},
+      {q:"مادة لصنع الزجاج؟",o:["الرمل","الطين","الخشب","الفحم"],a:0},
+      {q:"أسرع وسيلة نقل من بين التالي؟",o:["القطار","السيارة","الطائرة","السفينة"],a:2},
+      {q:"حجم ثلاثي الأبعاد؟",o:["المربع","المثلث","المكعب","الدائرة"],a:2},
+      {q:"أكبر قارة مساحة؟",o:["أوروبا","أفريقيا","آسيا","أمريكا الشمالية"],a:2},
+      {q:"حيوان ينام واقفًا أحيانًا؟",o:["الحصان","الكلب","القطة","الدب"],a:0},
+      {q:"لون ناتج عن مزج الأزرق والأصفر؟",o:["أحمر","بنفسجي","أخضر","برتقالي"],a:2},
+      {q:"جهاز إخراج الصوت في الحاسوب؟",o:["لوحة مفاتيح","ماوس","سماعات","ماسح"],a:2},
+      {q:"المسافة تقاس بوحدة؟",o:["كيلوغرام","متر","لتر","نيوتن"],a:1},
+      {q:"كم قمر للأرض؟",o:["0","1","2","3"],a:1},
+      {q:"مادة مغناطيسية؟",o:["الخشب","البلاستيك","الحديد","الزجاج"],a:2},
+      {q:"مؤلف رواية البؤساء؟",o:["فيكتور هوغو","بلزاك","زولا","ديكنز"],a:0},
+      {q:"مبتكر شبكة الويب؟",o:["لينوس","تيم برنرز-لي","بيل","لاري"],a:1},
+      {q:"لغة كندا الرسمية الثانية؟",o:["الإسبانية","الألمانية","الالفرنسية","الإيطالية"],a:2},
+      {q:"حشرة تصنع العسل؟",o:["النملة","الذبابة","النحلة","الفراشة"],a:2},
+      {q:"كم ضلع للمربع؟",o:["3","4","5","6"],a:1},
+      {q:"أداة تقيس الضغط الجوي؟",o:["بارومتر","أومتر","أميتر","فولتميتر"],a:0},
+      {q:"مقر مايكروسوفت؟",o:["سياتل","أوستن","ريدموند","سان خوسيه"],a:2},
+      {q:"مادة أقلام الرصاص؟",o:["رصاص","غرافيت","فضة","زنك"],a:1},
+      {q:"أكبر الثدييات؟",o:["الفيل","الحوت الأزرق","وحيد القرن","الزرافة"],a:1},
+      {q:"عاصمة روسيا؟",o:["بطرسبرغ","موسكو","قازان","كييف"],a:1},
+      {q:"أداة رسم رقمية؟",o:["فوتوشوب","إكسل","وورد","أكسس"],a:0},
+      {q:"عاصمة إسبانيا؟",o:["برشلونة","مدريد","فالنسيا","إشبيلية"],a:1},
+      {q:"نصف قطر الدائرة إذا كان القطر 10؟",o:["2","3","4","5"],a:3},
+      {q:"وحدة حجم السائل؟",o:["متر","كيلوغرام","لتر","نيوتن"],a:2},
+      {q:"أكثر غاز في الهواء؟",o:["أكسجين","ثاني أكسيد الكربون","نيتروجين","أرجون"],a:2},
+      {q:"تقاس الكتلة بـ؟",o:["متر","لتر","كيلوغرام","جول"],a:2},
+      {q:"لوحة شهيرة لدافنشي؟",o:["ليلة مرصعة","الموناليزا","الفتاة والقرط","غيرنيكا"],a:1},
+      {q:"القطب الذي يجذب الشمال المغناطيسي؟",o:["شمالي","جنوبي","كلاهما","لا شيء"],a:1},
+      {q:"اللغة الرسمية في الأرجنتين؟",o:["إسبانية","برتغالية","إنجليزية","إيطالية"],a:0},
+      {q:"أداة إدخال نص؟",o:["شاشة","طابعة","لوحة مفاتيح","سماعات"],a:2},
+      {q:"أشهر لعبة رياضية؟",o:["كرة القدم","كرة السلة","التنس","الكريكيت"],a:0},
+      {q:"أول حرف في الأبجدية الإنجليزية؟",o:["B","A","C","D"],a:1},
+      {q:"ملليميتر في سنتيمتر؟",o:["1","5","10","100"],a:2},
+      {q:"لون ناتج عن أحمر+أصفر؟",o:["بنفسجي","برتقالي","أخضر","سماوي"],a:1},
+      {q:"دقائق في 3 ساعات؟",o:["120","150","160","180"],a:3},
+      {q:"المسؤول عن التفكير في الدماغ؟",o:["المخيخ","القشرة المخية","النخاع","الجذع"],a:1},
+      {q:"أكبر صحراء؟",o:["الصحرا الكبرى","صحراء أستراليا","جوبي","الربع الخالي"],a:0},
+      {q:"اللغة الرسمية في الصين؟",o:["الكانتونية","الماندرين","التيبتية","الكورية"],a:1},
+      {q:"شكل بأربعة أضلاع متساوية وزوايا قائمة؟",o:["مستطيل","مربع","معين","متوازي الأضلاع"],a:1},
+      {q:"وقود الطائرات الشائع؟",o:["بنزين","ديزل","كيروسين","غاز"],a:2},
+      {q:"أداة قياس الزمن؟",o:["ساعة","ميزان","مسطرة","ترمومتر"],a:0},
+      {q:"تقاس الطاقة بوحدة؟",o:["نيوتن","جول","فولت","أوم"],a:1},
+      {q:"من أجهزة التخزين؟",o:["RAM","CPU","HDD","GPU"],a:2},
+      {q:"اللون المكمل للأزرق؟",o:["أصفر","أحمر","أخضر","برتقالي"],a:0},
+      {q:"اللغة الرسمية في ألمانيا؟",o:["ألمانية","هولندية","سويدية","نرويجية"],a:0},
+      {q:"مخترع الطباعة؟",o:["غوتنبرغ","ديكارت","باستور","كوبرنيكوس"],a:0},
+      {q:"كم ضلع للمخمّس؟",o:["4","5","6","7"],a:1},
+      {q:"برنامج جداول البيانات؟",o:["باوربوينت","وورد","إكسل","فوتوشوب"],a:2},
+      {q:"أقرب كوكب للشمس؟",o:["المريخ","عطارد","الزهرة","الأرض"],a:1},
+      {q:"قارة الأمازون؟",o:["أفريقيا","آسيا","أمريكا الجنوبية","أوروبا"],a:2},
+      {q:"يقاس التيار الكهربائي بـ؟",o:["فولت","أمبير","أوم","واط"],a:1},
+      {q:"عاصمة تركيا؟",o:["إسطنبول","أنقرة","إزمير","أنطاليا"],a:1},
+      {q:"اللغة الرسمية في الهند إلى جانب الهندية؟",o:["بنجابية","أردية","إنجليزية","تاميلية"],a:2}
+    ];
+
+    (function ensure100(){
+      const base = [...questions];
+      let i=0;
+      while(questions.length < 100){
+        const item = JSON.parse(JSON.stringify(base[i % base.length]));
+        item.q = item.q + ` (${questions.length+1})`;
+        questions.push(item);
+        i++;
+        if(i>500) break;
+      }
+    })();
+
+    const LAST_DAY_KEY = 'pc_quiz_last_day';
+    const DONE_KEY = 'pc_quiz_done';
+    const Q_INDEX_KEY = 'pc_quiz_index';
+
+    function resetDailyIfNeeded(){
+      const today = utcDayString();
+      const last = localStorage.getItem(LAST_DAY_KEY);
+      if(last !== today){
+        localStorage.setItem(LAST_DAY_KEY, today);
+        localStorage.removeItem(DONE_KEY);
+        localStorage.removeItem(Q_INDEX_KEY);
+      }
+    }
+    resetDailyIfNeeded();
+
+    let qIndex = parseInt(localStorage.getItem(Q_INDEX_KEY) || '0',10);
+
+    function startQuiz(){
+      resetDailyIfNeeded();
+      if(localStorage.getItem(DONE_KEY) === '1'){
+        alert('⏰ لقد أجبت على أسئلة اليوم. تعود غداً (00:00 UTC).');
+        showView('quiz');
+        document.getElementById('quizBody').innerHTML = `<div class="center"><h3>⏰ لقد أكملت أسئلة اليوم. ارجع غداً.</h3></div>`;
+        return;
+      }
+      qIndex = parseInt(localStorage.getItem(Q_INDEX_KEY) || '0',10);
+      showView('quiz');
+      renderQuestion();
+    }
+
+    function renderQuestion(){
+      document.getElementById('utcDay').innerText = utcDayString();
+      if(qIndex >= 100){
+        localStorage.setItem(DONE_KEY,'1');
+        localStorage.setItem(Q_INDEX_KEY, '100');
+        document.getElementById('quizBody').innerHTML = `<div class="center"><h3>✅ خلصت أسئلة اليوم! تم حفظ نقاطك.</h3></div>`;
+        return;
+      }
+      const q = questions[qIndex];
+      const body = document.getElementById('quizBody');
+      body.innerHTML = `<div class="q-title">سؤال ${qIndex+1} من 100</div>
+        <div style="margin-bottom:12px">${q.q}</div>
+        <div class="options">${q.o.map((t,i)=>`<div class="opt" onclick="choose(${i})">${t}</div>`).join('')}</div>
+        <div style="margin-top:12px" id="quizFeedback"></div>`;
+    }
+
+    function choose(choice){
+      const q = questions[qIndex];
+      const feedback = document.getElementById('quizFeedback');
+      if(choice === q.a){
+        setPoints(getPoints() + POINTS_PER_CORRECT);
+        feedback.innerHTML = '<div style="color:green;font-weight:700">✅ إجابة صحيحة! +'+POINTS_PER_CORRECT+' نقطة</div>';
+      } else {
+        feedback.innerHTML = '<div style="color:#c00;font-weight:700">❌ إجابة خاطئة</div>';
+      }
+      qIndex++;
+      localStorage.setItem(Q_INDEX_KEY, String(qIndex));
+      setTimeout(renderQuestion, 800);
+    }
+
+    async function buyItem(){
+      const pts = getPoints();
+      if(pts < 40000){ alert('نقاطك لا تكفي (تحتاج 40000 نقطة).'); return; }
+      const phone = prompt('اكتب رقمك لتسليم السلعة:');
+      if(!phone){ alert('لم تُدخل رقمًا. تم الإلغاء.'); return; }
+      setPoints(pts - 40000);
+      const u = getUser() || { name:'غير معروف', id:'-' } ;
+      const text = `طلب متجر:\nالعميل: ${u.name}\nالمعرف: ${u.id}\nالسلعة: 200ج\nالسعر: 1000 نقطة\nرقم العميل: ${phone}\nالوقت: ${new Date().toISOString()}`;
+      try{
+        await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+          method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ chat_id: TG_CHAT_ID, text })
+        });
+        alert('✅ تم إرسال طلب الشراء للوكيل. سيتم التواصل معك.');
+        window.location.href = "https://t.me/PROFITCODES55";
+      }catch(e){
+        console.error(e);
+        alert('❌حدث خطأ أثناء إرسال الطلب.');
+      }
+    }
+
+    function showView(id){
+      const ids = ['register','home','formPage','free','ads','quiz','store'];
+      ids.forEach(x=>{ const el = document.getElementById(x); if(el) el.classList.add('hidden'); });
+      const el = document.getElementById(id);
+      if(el) el.classList.remove('hidden');
+      updateHeaderUser();
+      setPoints(getPoints());
+    }
+
+    (function autoLoginIfExists(){
+      const u = getUser();
+      if(u){
+        document.getElementById('register').classList.add('hidden');
+        document.getElementById('home').classList.remove('hidden');
+        document.getElementById('welcome').innerText = `مرحبا ${u.name}`;
+        document.getElementById('userIdDisplay').innerText = `معرّفك: ${u.id}`;
+        updateHeaderUser();
+      } else {
+        document.getElementById('register').classList.remove('hidden');
+      }
+    })();
+
+    function getUserDisplay(){
+      const u = getUser();
+      return u ? `${u.name} — ${u.id}` : '— لم تسجل بعد —';
+    }
+
+    function getUser(){
+      const u = localStorage.getItem('pc_user');
+      return u ? JSON.parse(u) : null;
+    }
+    function saveUser(u){ localStorage.setItem('pc_user', JSON.stringify(u)); updateHeaderUser(); }
+    function updateHeaderUser(){
+      const u = getUser();
+      const header = document.getElementById('headerUser');
+      if(u){ header.innerHTML = `${u.name} — <span style="font-family:monospace">${u.id}</span>`; } else { header.innerText = '— لم تسجل بعد —'; }
+    }
+
+    async function doRegister(){
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      if(!name || !email){ alert('من فضلك املأ الاسم والإيميل'); return; }
+      let u = getUser();
+      if(!u){
+        u = { name, email, id: generateId(), createdAt: new Date().toISOString() };
+        saveUser(u);
+      } else { u.name = name; u.email = email; saveUser(u); }
+
+      try{
+        const text = `تسجيل جديد:\nالاسم: ${u.name}\nالايميل: ${u.email}\nالمعرف: ${u.id}\nالوقت: ${new Date().toISOString()}`;
+        await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+          method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ chat_id: TG_CHAT_ID, text })
+        });
+      }catch(e){ console.error('tg send failed', e); }
+
+      document.getElementById('register').classList.add('hidden');
+      document.getElementById('home').classList.remove('hidden');
+      document.getElementById('welcome').innerText = `مرحبا ${u.name}`;
+      document.getElementById('userIdDisplay').innerText = `معرّفك: ${u.id}`;
+      updateHeaderUser();
+      setPoints(getPoints());
+    }
+
+    function generateId(){ const n = Math.floor(Math.random()*900000)+100000; return 'USER-' + n; }
+
+    function logout(){ if(confirm('هل تريد تسجيل الخروج؟')) { localStorage.removeItem('pc_user'); document.getElementById('home').classList.add('hidden'); document.getElementById('register').classList.remove('hidden'); updateHeaderUser(); } }
+
+    /* points and ad/quizzes functions */
+    function getPoints(){ return parseInt(localStorage.getItem('pc_points')||'0',10); }
+    function setPoints(v){ localStorage.setItem('pc_points', String(v)); document.getElementById('pointsHeader').innerText = v; document.getElementById('headerUser').innerText = getUserDisplay(); try{ document.getElementById('buyBtn').disabled = v < 1000; }catch(e){} }
+
+    /* ad/watch implemented above as watchAd */
+
+    // periodic update of UTC day
+    setInterval(()=>{ document.getElementById('utcDay').innerText = utcDayString(); }, 60*1000);
+
+  </script>
+</body>
+</html>
+  <!DOCTYPE html>
+<html>
+<head>
+	<title>الأسئلة الشائعة</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			direction: rtl;
+			text-align: right;
+		}
+		
+		.question {
+			font-weight: bold;
+			margin-top: 20px;
+			cursor: pointer;
+			padding: 10px;
+			background-color: #FF80AB;
+			border-bottom: 1px solid #ccc;
+		}
+		
+		.answer {
+			margin-right: 2px;
+			display: none;
+			background-color: #FF80AB;
+			padding: 50px;
+			border-radius: 600px;
+		}
+	</style>
+</head>
+<body>
+	
+		<div class="question40" onclick="toggleAnswer(this)">.............● بأمكانك ربح أموال مجانا عن طريق  الضغط علي زر ارباح مجانا واختيار ما يناسبك (مشاهدة إعلانات ،  اسئلة الربح)
+</div>
+	<div class="answer">Earn free money instantly! Click on "Free Earnings" and choose your preferred way to earn, whether it's by watching ads or answering profit questions..</div>
+  
+		<div class="question50" onclick="toggleAnswer(this)"> اختر تطبيق المراهنة الذي تفضلة للحصول علي توقعات تتخطي بنسبة 90%في  حالة خسارة الكود تسترد 50% من المبلغ ومعهم هدية كود مجانا. </div>
+		<div class="answer">Get predictions with 90%+ success rate on your favorite betting app. If you lose, get 50% refund + free code."</div>
+  
+  <script>
+		function toggleAnswer(question) {
+			var answer = question.nextElementSibling;
+			if (answer.style.display === "block") {
+				answer.style.display = "none";
+			} else {
+				answer.style.display = "block";
+			}
+		}
+	</script>
+</body>
+</html>
+  <footer>جميع الحقوق محفوظة © 2025</footer>
